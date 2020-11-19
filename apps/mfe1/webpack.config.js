@@ -1,8 +1,8 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require('path');
-const webpack = require('webpack');
+const SharedMappings = require('./shared-mappings').default;
 
-
+const sharedMappings = new SharedMappings();
+sharedMappings.register('../../tsconfig.base.json');
 
 module.exports = {
   output: {
@@ -13,31 +13,31 @@ module.exports = {
     runtimeChunk: false
   },
   plugins: [
+    sharedMappings.getPlugin(),
+    // new webpack.NormalModuleReplacementPlugin(
+    //   /auth-lib/, function(r) {
 
-    new webpack.NormalModuleReplacementPlugin(
-      /auth-lib/, function(r) {
-
-          // if ( r.contextInfo && r.contextInfo.issuer && r.contextInfo.issuer.includes('flight-search.component.ts')
+    //       // if ( r.contextInfo && r.contextInfo.issuer && r.contextInfo.issuer.includes('flight-search.component.ts')
           
-          //     && r.request.includes('auth-lib')
-          // ) {
+    //       //     && r.request.includes('auth-lib')
+    //       // ) {
 
-          //     console.log('replace');
-        if (r.request.includes('auth-lib') && r.context && r.context.includes('mfe1')) {
-          console.log('c', r.context);
-          console.log('r', r.request);
-          console.log('c+r', path.join(r.context, r.request));
+    //       //     console.log('replace');
+    //     if (r.request.includes('auth-lib') && r.context && r.context.includes('mfe1')) {
+    //       console.log('c', r.context);
+    //       console.log('r', r.request);
+    //       console.log('c+r', path.join(r.context, r.request));
 
-          console.log('---');
-          //console.log('ctx', path.normalize(r.context));
+    //       console.log('---');
+    //       //console.log('ctx', path.normalize(r.context));
 
-          // console.log('request', path.normalize(r.request));
-          // context.request = path.combine(__dirname, 'libs/auth-lib/src/index.ts'); 
-          r.request = 'auth-lib';
-      }
+    //       // console.log('request', path.normalize(r.request));
+    //       // context.request = path.combine(__dirname, 'libs/auth-lib/src/index.ts'); 
+    //       r.request = 'auth-lib';
+    //   }
       
-      }
-    ),
+    //   }
+    // ),
     new ModuleFederationPlugin({
       
         // For remotes (please adjust)
@@ -60,10 +60,11 @@ module.exports = {
             singleton: true,
             strictVersion: true
           },
-          "auth-lib": {
-            import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
-            requiredVersion: false
-          }
+          // "auth-lib": {
+          //   import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
+          //   requiredVersion: false
+          // },
+          ...sharedMappings.getDescriptors()
         }
         
     })
