@@ -1,9 +1,10 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const path = require('path');
 
 module.exports = {
     output: {
-        publicPath: "http://localhost:5000/",
-        uniqueName: "shell"
+        uniqueName: "shell",
+        chunkFilename: '[name]-[contenthash].js',
     },
     optimization: {
         // Only needed to bypass a temporary bug
@@ -14,7 +15,24 @@ module.exports = {
             remotes: {
                 'mfe1': "mfe1@http://localhost:3000/remoteEntry.js" 
             },
-            shared: ["@angular/core", "@angular/common", "@angular/router"]
+            shared: {
+                "@angular/core": {
+                    singleton: true,
+                    strictVersion: true
+                },
+                "@angular/common": {
+                    singleton: true,
+                    strictVersion: true
+                },
+                "@angular/router": {
+                    singleton: true,
+                    strictVersion: true
+                },
+                "auth-lib": {
+                    import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
+                    requiredVersion: false
+                }
+            }
         })
     ],
 };

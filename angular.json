@@ -17,12 +17,15 @@
             "index": "apps/mfe1/src/index.html",
             "main": "apps/mfe1/src/main.ts",
             "polyfills": "apps/mfe1/src/polyfills.ts",
-            "tsConfig": "apps/mfe1/tsconfig.app.json",
+            "tsConfig": "apps/mfe1/tsconfig.json",
             "aot": true,
-            "plugin": "~mf.config.js",
-            "assets": ["apps/mfe1/src/favicon.ico", "apps/mfe1/src/assets"],
+            "assets": [
+              "apps/mfe1/src/favicon.ico",
+              "apps/mfe1/src/assets"
+            ],
             "styles": [],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -35,7 +38,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -50,7 +53,8 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/mfe1/webpack.prod.config.js"
             }
           }
         },
@@ -58,12 +62,13 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "mfe1:build",
-            "plugin": "~mf.config.js",
-            "port": 3000
+            "port": 3000,
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mfe1:build:production"
+              "browserTarget": "mfe1:build:production",
+              "extraWebpackConfig": "apps/mfe1/webpack.prod.config.js"
             }
           }
         },
@@ -80,19 +85,27 @@
             "polyfills": "apps/mfe1/src/polyfills.ts",
             "tsConfig": "apps/mfe1/tsconfig.spec.json",
             "karmaConfig": "apps/mfe1/karma.conf.js",
-            "assets": ["apps/mfe1/src/favicon.ico", "apps/mfe1/src/assets"],
-            "styles": ["apps/mfe1/src/styles.css"],
-            "scripts": []
+            "assets": [
+              "apps/mfe1/src/favicon.ico",
+              "apps/mfe1/src/assets"
+            ],
+            "styles": [
+              "apps/mfe1/src/styles.css"
+            ],
+            "scripts": [],
+            "extraWebpackConfig": "apps/mfe1/webpack.config.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/mfe1/tsconfig.app.json",
+              "apps/mfe1/tsconfig.json",
               "apps/mfe1/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -100,39 +113,39 @@
     "shell": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/shell",
-      "sourceRoot": "projects/shell/src",
+      "root": "apps/shell",
+      "sourceRoot": "apps/shell/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/shell",
-            "index": "projects/shell/src/index.html",
-            "main": "projects/shell/src/main.ts",
-            "polyfills": "projects/shell/src/polyfills.ts",
-            "tsConfig": "projects/shell/tsconfig.app.json",
+            "index": "apps/shell/src/index.html",
+            "main": "apps/shell/src/main.ts",
+            "polyfills": "apps/shell/src/polyfills.ts",
+            "tsConfig": "apps/shell/tsconfig.json",
             "aot": true,
-            "plugin": "~projects/shell/mf.config.js",
             "assets": [
-              "projects/shell/src/favicon.ico",
-              "projects/shell/src/assets"
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
             ],
             "styles": [],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/shell/src/environments/environment.ts",
-                  "with": "projects/shell/src/environments/environment.prod.ts"
+                  "replace": "apps/shell/src/environments/environment.ts",
+                  "with": "apps/shell/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -147,7 +160,8 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -155,12 +169,13 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "shell:build",
-            "plugin": "~projects/shell/mf.config.js",
-            "port": 5000
+            "port": 5000,
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -173,45 +188,48 @@
         "test": {
           "builder": "ngx-build-plus:karma",
           "options": {
-            "main": "projects/shell/src/test.ts",
-            "polyfills": "projects/shell/src/polyfills.ts",
-            "tsConfig": "projects/shell/tsconfig.spec.json",
-            "karmaConfig": "projects/shell/karma.conf.js",
+            "main": "apps/shell/src/test.ts",
+            "polyfills": "apps/shell/src/polyfills.ts",
+            "tsConfig": "apps/shell/tsconfig.spec.json",
+            "karmaConfig": "apps/shell/karma.conf.js",
             "assets": [
-              "projects/shell/src/favicon.ico",
-              "projects/shell/src/assets"
+              "apps/shell/src/favicon.ico",
+              "apps/shell/src/assets"
             ],
             "styles": [],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/shell/tsconfig.app.json",
-              "projects/shell/tsconfig.spec.json"
+              "apps/shell/tsconfig.json",
+              "apps/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     },
-    "shared-lib": {
+    "auth-lib": {
       "projectType": "library",
-      "root": "libs/shared-lib",
-      "sourceRoot": "libs/shared-lib/src",
+      "root": "libs/auth-lib",
+      "sourceRoot": "libs/auth-lib/src",
       "prefix": "mfe1",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/shared-lib/tsconfig.lib.json",
-            "project": "libs/shared-lib/ng-package.json"
+            "tsConfig": "libs/auth-lib/tsconfig.lib.json",
+            "project": "libs/auth-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/shared-lib/tsconfig.lib.prod.json"
+              "tsConfig": "libs/auth-lib/tsconfig.lib.prod.json"
             }
           }
         },
@@ -219,18 +237,21 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/shared-lib/tsconfig.lib.json",
-              "libs/shared-lib/tsconfig.spec.json"
+              "libs/auth-lib/tsconfig.lib.json",
+              "libs/auth-lib/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared-lib/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/auth-lib/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/shared-lib/src/test.ts",
-            "tsConfig": "libs/shared-lib/tsconfig.spec.json",
-            "karmaConfig": "libs/shared-lib/karma.conf.js"
+            "main": "libs/auth-lib/src/test.ts",
+            "tsConfig": "libs/auth-lib/tsconfig.spec.json",
+            "karmaConfig": "libs/auth-lib/karma.conf.js"
           }
         }
       },

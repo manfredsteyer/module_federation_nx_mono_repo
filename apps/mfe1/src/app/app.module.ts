@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { FlightsModule } from './flights/flights.module';
 import { APP_ROUTES } from './app.routes';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthLibModule } from 'auth-lib';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FlightsModule,
     AuthLibModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
-    AppComponent,
     HomeComponent,
-    NotFoundComponent
+    AppComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+      AppComponent
+  ]
 })
 export class AppModule { }

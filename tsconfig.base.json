@@ -11,9 +11,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "@mfe1/shared-lib": ["libs/shared-lib/src/index.ts"]
+      "auth-lib": [
+        "libs/auth-lib/src/index.ts"
+      ]
     },
     "rootDir": "."
   }
