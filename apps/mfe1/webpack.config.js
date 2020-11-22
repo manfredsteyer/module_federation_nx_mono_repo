@@ -36,7 +36,7 @@ module.exports = {
           singleton: true,
           strictVersion: true
         },
-        ...sharedMappings.getDescriptors()
+        ...sharedMappings.getDescriptor('@demo/auth-lib', '^2.0.0')
       }
     }),
     sharedMappings.getPlugin(),

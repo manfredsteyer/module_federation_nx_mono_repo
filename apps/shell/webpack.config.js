@@ -38,9 +38,10 @@ module.exports = {
                 //     import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
                 //     requiredVersion: false
                 // }
-                ...sharedMappings.getDescriptors()
+                ...sharedMappings.getDescriptor('@demo/auth-lib', '^1.0.0')
             }
         }),
         sharedMappings.getPlugin(),
     ],
 };
+
