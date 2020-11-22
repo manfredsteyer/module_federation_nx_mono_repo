@@ -1,10 +1,16 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require('path');
+const mf = require("@angular-architects/module-federation/webpack");
+const path = require("path");
+
+const sharedMappings = new mf.SharedMappings();
+sharedMappings.register(
+    path.join(__dirname, '../../tsconfig.base.json'),
+    ['auth-lib']    
+);
 
 module.exports = {
     output: {
-        uniqueName: "shell",
-        chunkFilename: '[name]-[contenthash].js',
+        uniqueName: "shell"
     },
     optimization: {
         // Only needed to bypass a temporary bug
@@ -28,11 +34,13 @@ module.exports = {
                     singleton: true,
                     strictVersion: true
                 },
-                "auth-lib": {
-                    import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
-                    requiredVersion: false
-                }
+                // "auth-lib": {
+                //     import: path.resolve(__dirname, "../../libs/auth-lib/src/index.ts"),
+                //     requiredVersion: false
+                // }
+                ...sharedMappings.getDescriptors()
             }
-        })
+        }),
+        sharedMappings.getPlugin(),
     ],
 };

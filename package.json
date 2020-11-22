@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "nx",
+    "start:all": "nx run-many --target serve --all --maxParallel 2",
     "start:shell": "ng serve shell  -o --port 5000",
     "start:mfe1": "ng serve mfe1 -o --port 3000",
     "build:shell": "ng build shell --prod",
@@ -37,7 +38,7 @@
     "webpack": "^5.4.0"
   },
   "dependencies": {
-    "@angular-architects/module-federation": "^1.1.1",
+    "@angular-architects/module-federation": "^1.2.0",
     "@angular/animations": "~11.0.0",
     "@angular/common": "~11.0.0",
     "@angular/compiler": "~11.0.0",
