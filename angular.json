@@ -130,7 +130,7 @@
               "apps/shell/src/favicon.ico",
               "apps/shell/src/assets"
             ],
-            "styles": [],
+            "styles": ["apps/shell/src/styles.css"],
             "scripts": [],
             "extraWebpackConfig": "apps/shell/webpack.config.js"
           },

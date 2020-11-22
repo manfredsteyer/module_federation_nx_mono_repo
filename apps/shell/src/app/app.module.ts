@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { APP_ROUTES } from './app.routes';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthLibModule } from 'auth-lib';
+import { AuthLibModule } from '@demo/auth-lib';
 
 @NgModule({
   imports: [

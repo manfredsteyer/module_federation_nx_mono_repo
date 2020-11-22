@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FlightsModule } from './flights/flights.module';
 import { APP_ROUTES } from './app.routes';
-import { AuthLibModule } from 'auth-lib';
+import { AuthLibModule } from '@demo/auth-lib';
 
 @NgModule({
   imports: [

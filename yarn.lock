@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@angular-architects/module-federation@1.2":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@angular-architects/module-federation/-/module-federation-1.2.0.tgz#14d78edbde51ac71e48b64d8b031e86ab86851e1"
-  integrity sha512-IfJOOuc5Y9wypG0u+2asxCw5qc/MUzuNRw/vHA0tYSMakOfL9R94+HvM+HUG+/195KK1mRFTmlVc6yZJwab60w==
+"@angular-architects/module-federation@1.2.1-rc.0":
+  version "1.2.1-rc.0"
+  resolved "http://localhost:4873/@angular-architects%2fmodule-federation/-/module-federation-1.2.1-rc.0.tgz#b01e87d966a2f58cbb8c0f0089beb9f3f201c3dd"
+  integrity sha512-3CqpTQDBQTiUHEVVZipiy6tqFz+xQi58bPBsF0v5R1IgSz/u27vz8lG3SC7rMGWsouP8aZmN32dC3jMt0P9qnA==
   dependencies:
     "@nrwl/workspace" "^10.3.0"
     cross-spawn "^7.0.3"

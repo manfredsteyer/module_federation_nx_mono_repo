@@ -16,7 +16,7 @@
       "dom"
     ],
     "paths": {
-      "auth-lib": [
+      "@demo/auth-lib": [
         "libs/auth-lib/src/index.ts"
       ]
     },
