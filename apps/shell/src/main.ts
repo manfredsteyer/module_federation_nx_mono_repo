@@ -1,3 +1,5 @@
+import { loadRemoteEntry } from '@angular-architects/module-federation';
 
-
-  import('./bootstrap');
+loadRemoteEntry({type: 'module', remoteEntry: 'http://localhost:3000/remoteEntry.js'})
+  .then(() => import('./bootstrap'))
+  .catch(err => console.error('err', err));
