@@ -10,16 +10,5 @@
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
-  },
-  "projects": {
-    "shell": {
-      "tags": []
-    },
-    "mfe1": {
-      "tags": []
-    },
-    "auth-lib": {
-      "tags": []
-    }
   }
 }
